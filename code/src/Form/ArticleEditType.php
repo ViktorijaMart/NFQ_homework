@@ -16,7 +16,11 @@ class ArticleEditType extends AbstractType
             ->add('title')
             ->add('text')
             ->add('image')
-            ->add('edit', SubmitType::class)
+            ->add('edit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-sm btn-outline-secondary'
+                ]
+            ])
         ;
     }
 
