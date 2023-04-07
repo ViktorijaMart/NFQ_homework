@@ -14,10 +14,13 @@
                 <a href="{{ path('article_view', {id: article.id}) }}" class="btn btn-sm btn-outline-secondary">View</a>
                 <a href="{{ path('article_edit', {id: article.id}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
             </div>
-
-            <small class="text-muted">
-                X mins
-            </small>
+            {% for articleReadingTime in readingTimeData %}
+                {% if articleReadingTime.article_id is same as(article.id) %}
+                    <small class="text-muted">
+                        {{ articleReadingTime.reading_time }} mins
+                    </small>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>
