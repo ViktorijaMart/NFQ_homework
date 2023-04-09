@@ -24,9 +24,19 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    /**
+     * @var \DateTime
+     */
+    #[Gedmo\Timestampable(on: 'create')]
+    #[ORM\Column(name: 'created_at', type: Types::DATE_MUTABLE, nullable: true)]
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    #[ORM\Column(name: 'updated_at', type: Types::DATETIME_MUTABLE, nullable: true)]
     #[Gedmo\Timestampable]
-    private \DateTime $updatedAt;
+    private $updatedAt;
 
     /**
      * @return int|null
@@ -84,15 +94,13 @@ class Article
         $this->image = $image;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getCreated()
     {
-        return $this->updatedAt;
+        return $this->createdAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    public function getUpdated()
     {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
+        return $this->updatedAt;
     }
 }

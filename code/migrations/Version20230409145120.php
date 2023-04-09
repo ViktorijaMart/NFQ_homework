@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230409140959 extends AbstractMigration
+final class Version20230409145120 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,7 +20,8 @@ final class Version20230409140959 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE article ADD COLUMN updated_at DATE NOT NULL');
+        $this->addSql('ALTER TABLE article ADD COLUMN created_at DATE DEFAULT NULL');
+        $this->addSql('ALTER TABLE article ADD COLUMN updated_at DATETIME DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
